@@ -1,6 +1,24 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model({
+  settings: {
+    foreignKeys: {
+      fk_product_invoice_productId: {
+        name: 'fk_product_invoice_productId',
+        entity: 'Product',
+        entityKey: 'id',
+        foreignKey: 'productId',
+      },
+      fk_product_invoice_invoiceId: {
+        name: 'fk_product_invoice_invoiceId',
+        entity: 'Invoice',
+        entityKey: 'id',
+        foreignKey: 'invoiceId',
+      }
+    },
+  },
+})
 export class ProductsInvoice extends Entity {
   @property({
     type: 'number',

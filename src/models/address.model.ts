@@ -1,6 +1,18 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model({
+  settings: {
+    foreignKeys: {
+      fk_address_customerId: {
+        name: 'fk_address_customerId',
+        entity: 'Customer',
+        entityKey: 'id',
+        foreignKey: 'customerId',
+      }
+    },
+  },
+})
 export class Address extends Entity {
   @property({
     type: 'number',

@@ -1,6 +1,18 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
+@model({
+  settings: {
+    foreignKeys: {
+      fk_image_productId: {
+        name: 'fk_image_productId',
+        entity: 'Product',
+        entityKey: 'id',
+        foreignKey: 'productId',
+      }
+    },
+  },
+})
 export class Image extends Entity {
   @property({
     type: 'number',
